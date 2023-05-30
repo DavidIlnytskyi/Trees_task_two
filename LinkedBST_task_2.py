@@ -8,8 +8,6 @@ from math import log
 from abstractcollection import AbstractCollection
 from bstnode import BSTNode
 from linkedstack import LinkedStack
-import matplotlib.pyplot as plt
-import numpy as np
 
 
 class LinkedBST(AbstractCollection):
@@ -411,7 +409,7 @@ max([node for node in self.find_all_nodes() if node.data < item], key=lambda x: 
             return finded_node.data
         return None
 
-    def demo_bst(self, path):
+    def demo_bst(self, path, NUMBER=10000):
         """
         Demonstration of efficiency binary search tree for the search tasks.
         :param path:
@@ -421,7 +419,7 @@ max([node for node in self.find_all_nodes() if node.data < item], key=lambda x: 
         """
         words = self.read_file(path)
 
-        def find_list(words, NUMBER=10000):
+        def find_list(words):
             random_words = sample(words, NUMBER)
             iterator = 0
             key = random_words[iterator]
@@ -443,7 +441,7 @@ max([node for node in self.find_all_nodes() if node.data < item], key=lambda x: 
             print(f'Success: Finded list version: {end_test - start_test}')
             return end_test - start_test
 
-        def find_sorted_tree(words, NUMBER=10000):
+        def find_sorted_tree(words):
             Tree_exp = LinkedBST()
             random_words = sample(words, NUMBER)
 
@@ -459,7 +457,7 @@ max([node for node in self.find_all_nodes() if node.data < item], key=lambda x: 
             print(f'Success: Finded sorted tree version {end_test - start_test}')
             return end_test - start_test
 
-        def find_random_tree(words, NUMBER=10000):
+        def find_random_tree(words):
             Tree_exp = LinkedBST()
             random_words = sample(words, NUMBER)
             shuffle(words)
@@ -475,7 +473,7 @@ max([node for node in self.find_all_nodes() if node.data < item], key=lambda x: 
             print(f'Success: Finded random tree version {end_test - start_test}')
             return end_test - start_test
 
-        def find_rebalanced_tree(words, NUMBER=10000):
+        def find_rebalanced_tree(words):
             Tree_exp = LinkedBST()
             random_words = sample(words, NUMBER)
             shuffle(words)
@@ -512,4 +510,4 @@ max([node for node in self.find_all_nodes() if node.data < item], key=lambda x: 
         return words
 
 Tree = LinkedBST()
-print(Tree.demo_bst('words.txt'))
+print(Tree.demo_bst('words.txt', 100))
